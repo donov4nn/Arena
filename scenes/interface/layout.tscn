@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck2ai6wwt33nd"]
+
+[sub_resource type="Gradient" id="Gradient_uby12"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ns1m"]
+gradient = SubResource("Gradient_uby12")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.966019, 0)
+
+[sub_resource type="Gradient" id="Gradient_llaco"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqsgl"]
+gradient = SubResource("Gradient_llaco")
+width = 100
+height = 100
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 1)
+
+[node name="Layout" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DashProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 980.0
+offset_right = -1420.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = SubResource("GradientTexture2D_3ns1m")
+texture_progress = SubResource("GradientTexture2D_fqsgl")
+
+[node name="PowerOneProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 538.0
+offset_top = 980.0
+offset_right = -1282.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_under = SubResource("GradientTexture2D_3ns1m")
+texture_progress = SubResource("GradientTexture2D_fqsgl")

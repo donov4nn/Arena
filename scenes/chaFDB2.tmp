@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnff0omcitd32"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_7keit"]
+[ext_resource type="Texture2D" uid="uid://cymobue2k6wcd" path="res://assets/CatTile.png" id="2_5wa5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opfq1"]
+size = Vector2(20, 17)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7keit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5wa5g")
+offset = Vector2(0, -9)
+hframes = 8
+vframes = 39
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_opfq1")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

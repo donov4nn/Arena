@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnff0omcitd32"]
+
+[ext_resource type="Script" path="res://scripts/character.gd" id="1_7keit"]
+[ext_resource type="Texture2D" uid="uid://b8cecg1cq5e2m" path="res://icon.svg" id="2_njscy"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7keit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_njscy")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(64, -59.6, 64, 59, 59.6, 64, -59, 64, -64, 59.6, -64, -59.6, -59, -63.9, 59, -64)
+metadata/_edit_lock_ = true
+
+[node name="Layout" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -576.0
+offset_top = 199.0
+offset_right = 577.0
+offset_bottom = 323.0
+
+[node name="DashCDText" type="Label" parent="Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.126
+anchor_top = 0.577
+anchor_right = 0.126
+anchor_bottom = 0.577
+offset_left = -76.278
+offset_top = -27.548
+offset_right = 76.722
+offset_bottom = 27.452
+
+[node name="PowerOneCDText" type="Label" parent="Layout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.331
+anchor_top = 0.585
+anchor_right = 0.331
+anchor_bottom = 0.585
+offset_left = -76.643
+offset_top = -27.54
+offset_right = 76.357
+offset_bottom = 27.46

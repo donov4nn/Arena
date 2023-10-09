@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://byndqipnk4pwv"]
+
+[ext_resource type="Texture2D" uid="uid://c0pr7rsdk4pvu" path="res://assets/powers/Yellow Effect Bullet Impact Explosion 32x32.png" id="1_evrll"]
+
+[sub_resource type="GDScript" id="GDScript_ggj2t"]
+script/source = "extends Area2D
+
+@export var speed = 1000
+var target_position = Vector2.ZERO
+var direction = Vector2.ZERO
+
+func _ready():
+	get_node(\"AnimationPlayer\").play(\"fire_line\")
+	set_position(get_parent().get_node(\"Player\").position)
+	target_position = get_global_mouse_position()
+	direction = (target_position - position).normalized()
+	get_node(\"Sprite2D\").rotation = PI + atan2(direction.y, direction.x)
+	connect(\"body_entered\", _on_body_entered)
+
+func _process(delta):	
+	position += direction * speed * delta
+
+func _on_body_entered(body):
+	if body is TileMap:
+		queue_free()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7djpv"]
+radius = 11.0
+height = 32.0
+
+[sub_resource type="Animation" id="Animation_heu6p"]
+resource_name = "fire_line"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [111, 112, 113]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7vi1"]
+_data = {
+"fire_line": SubResource("Animation_heu6p")
+}
+
+[node name="FirePower" type="Area2D"]
+script = SubResource("GDScript_ggj2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_evrll")
+hframes = 20
+vframes = 16
+frame = 111
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_7djpv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_e7vi1")
+}
